@@ -106,7 +106,7 @@ document.getElementById("table").deleteRow(rowindex);
  
   }
 
-
+// pagination
  var tbody= document.querySelector("tbody");
  var pageUl= document.querySelector(".pagination");
  var itemShow= document.querySelector("#itemperpage");

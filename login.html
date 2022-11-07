@@ -6,34 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  -->
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  -->
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
-  
-</head>
-                                                 
-<body>
     
-    <div class="container">
-        <h1 class="heading"> LOGIN PAGE</h1>
+    <link rel="stylesheet" href="login.css">
 
-        <form class="form-horizontal">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="heading"> LOGIN </h1>
+
+        <form class="form-horizontal" id="form">
 
 
             <div class="form-group">
-                <label for="fname">USERNAME </label>
-                <input type="text" id="Uname" name="Uname" placeholder="Enter Username" class="form-control">
+                <label for="uname">USERNAME </label>
+                <input type="text" id="uname" name="Uname" placeholder="Enter Username" class="form-control">
+                <p></p>
             </div>
 
 
             <div class="form-group">
                 <label for="password">PASSWORD</label>
-                <input type="password" id="pass1" name="pass1" placeholder="Enter Password" class="form-control">
+                <input type="password" id="password" name="pass1" placeholder="Enter Password" class="form-control">
+                <p></p>
             </div>
             <input type="submit"  class="btn btn-primary" value="Submit">
-        <a class="btn btn-primary" href="register.html" role="button">login</a>
+        <a class="btn btn-primary" href="register.html" role="button">Register</a>
         </form>
+    </div>
+        <script src="login.js"></script>
 
 </body>
 

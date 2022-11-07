@@ -103,8 +103,8 @@ document.getElementById("table").deleteRow(rowindex);
             }
          }
 }
-    
-}
+ 
+  }
 
 
  var tbody= document.querySelector("tbody");
@@ -113,23 +113,110 @@ document.getElementById("table").deleteRow(rowindex);
  var tr= tbody.querySelectorAll("tr");
  var emptyBox=[];
  var index=1;
- var itemparpage= 5;
+ var itemparpage= 4;
+ givetrperpage=()=>{};
+ var getItem;
+ 
+ 
 
-     for(let i; i<tr.length;i++){
+
+     for(let i=0; i<tr.length;i++){
          emptyBox.push(tr[i]);
         }
      itemShow.onchange = givetrperpage;
 
      givetrperpage = () =>{
-           itemparpage = Number(this.value)
-     }
-
+      itemparpage = Number(this.value)
+      displayPage(itemparpage);
+      pageGenerater(itemparpage);
+      getElement(itemparpage);
+   }
      displayPage = (limit) =>{
       tbody.innerHTML = '';
       for(let i=0; i<limit; i++){
          tbody.appendChild(emptyBox[i]);
       }
-
+       const pageNum= pageUl.querySelectorAll(".list");
+       pageNum.forEach(n=>n.remove());
+      
      }
      displayPage(itemparpage);
      
+     
+     pageGenerater = () => {
+      const num_of_tr= emptyBox.length;
+      if(num_of_tr <= getItem){
+          pageUl.style.display = "none"
+      }
+      else{
+         pageUl.style.display = "flex"
+         const num_of_page = Math.ceil(num_of_tr/getItem);
+         for(let i=1;i<=num_of_page;i++){
+            const li= document.createElement('li');
+            li.className= 'list';
+            const a= document.createElement('a')
+             a.href="#";
+             a.innerText=i;
+             a.setAttribute('data-page',i)
+             li.appendChild(a);
+             pageUl.insertBefore(li,pageUl.querySelector("next"));
+         }
+      }
+      }
+      //pageGenerater(itemparpage);
+
+      let pageLink = pageUl.querySelectorAll('a');
+      let lastPage=pageLink.length - 2;
+
+      pageRunner = (page,items,lastPage,active) =>{
+         for(button of page){
+            button.onclick = e =>{
+               const page_num= e.target.getAttribute("data-page");
+               const page_mover= e.target.getAttribute("id");
+               if(page_num != null){
+                  index=page_num;
+               }else{
+                  if(page_mover === "next"){
+                     index++
+                     if(index >= lastPage){
+                        index=lastPage;
+                     }
+                  }else{
+                     index--;
+                     if(index <= 1){
+                        index = 1;
+                     }
+                  }
+               }
+               pageMaker(index,items,active);
+              }
+         }
+          
+      }
+      var pageli = pageUl.querySelectorAll(".list");
+      pageli[0].classList.add("active");
+      pageRunner(pageLink,itemparpage,lastPage,pageli) ;
+
+     getElement = (val) =>{
+      let pageLink= pageUl.querySelectorAll("a");
+      let lastPage= pageLink.length - 2;
+      let pageli = pageUl.querySelectorAll(".list");
+      pageli[0].classList.add("active");
+      pageRunner(pageLink,val ,lastPage,pageli) ;
+     }
+     
+     pageMaker = (index,item_per_page,activePage) =>{
+         const start = item_per_page * index;
+         const end = start + item_per_page;
+         const current_page = emptyBox.slice((start - item_per_page),(end - item_per_page));
+         tbody.innerHTML= '';
+         for(let i=0;i<current_page.length;i++){
+            let item = current_page[i];
+            tbody.appendChild(item);
+
+         }
+         Array.from(activePage).forEach((e) => {
+            e.classList.remove("active");
+         });
+         activePage[index - 1].classList.add("active");
+     }

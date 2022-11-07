@@ -7,9 +7,9 @@ body{
     background-color: rgb(24, 179, 199);
 }
 
-table{
+ table{
     visibility: hidden;
-}
+} 
 #action{
     width: 60%;
     height: 80vh;

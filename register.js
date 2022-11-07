@@ -12,8 +12,8 @@ Inputvalidatation = () => {
     var passwordInput = document.getElementById("password").value.trim();
     var cpasswordInput = document.getElementById("cpassword").value.trim();
     var emailvalid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    var passvalid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-    var uservalid = /^[A-Za-z][A-Za-z]{7,29}$/;
+    var passvalid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/;
+    var uservalid = /^[A-Za-z][A-Za-z]{3,29}$/;
     key = 0; a = 0; b = 0; c = 0;
 
     // Inputvalidation
